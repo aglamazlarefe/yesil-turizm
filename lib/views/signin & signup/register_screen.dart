@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:yesil_turizm/config/Colors.dart';
+import 'package:yesil_turizm/services/authservices.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -13,16 +14,34 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   late String email;
   late String password;
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Form(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20),
-            child: TextFormField(
+          child: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextFormField(
+              controller: _nameController,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              decoration: const InputDecoration(
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: project_colors.green_base)),
+                  labelText: "İsim",
+                  labelStyle: TextStyle(color: project_colors.green_base),
+                  border: OutlineInputBorder()),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            TextFormField(
+              controller: _emailController,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               decoration: const InputDecoration(
                   focusedBorder: OutlineInputBorder(
@@ -30,24 +49,12 @@ class _LoginPageState extends State<LoginPage> {
                   labelText: "E-posta",
                   labelStyle: TextStyle(color: project_colors.green_base),
                   border: OutlineInputBorder()),
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return "e-postanızı giriniz";
-                } else {
-                  return null;
-                }
-              },
-              onSaved: (value) {
-                value = email;
-              },
             ),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20),
-            child: TextFormField(
+            const SizedBox(
+              height: 30,
+            ),
+            TextFormField(
+              controller: _passwordController,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               decoration: const InputDecoration(
                   focusedBorder: OutlineInputBorder(
@@ -55,33 +62,17 @@ class _LoginPageState extends State<LoginPage> {
                   labelText: "Şifre",
                   labelStyle: TextStyle(color: project_colors.green_base),
                   border: OutlineInputBorder()),
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return "Şifrenizi giriniz";
-                } else {
-                  return null;
-                }
-              },
-              onSaved: (value) {
-                value = password;
-              },
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              TextButton(
-                onPressed: () {},
-                child: const Text("kayıt ol"),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: const Text("Şifremi unuttum"),
-              )
-            ],
-          ),
-          ElevatedButton(onPressed: () {}, child: Text("Devam Et"))
-        ],
+            ElevatedButton(
+                onPressed: () {
+                  auth_services().signup(
+                      name: _nameController.text,
+                      email: _emailController.text,
+                      password: _passwordController.text);
+                },
+                child: const Text("kayıt ol"))
+          ],
+        ),
       )),
     );
   }
