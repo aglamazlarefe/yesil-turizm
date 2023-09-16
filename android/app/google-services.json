@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "748810917400",
+    "project_id": "yesil-turizm",
+    "storage_bucket": "yesil-turizm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748810917400:android:b985cc6ad309fcd0dc956d",
+        "android_client_info": {
+          "package_name": "com.example.yesil_turizm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAX-lw6Mg7FOwH2ke729NRPj_fxol4JjWg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
