@@ -1,8 +1,10 @@
-// ignore_for_file: camel_case_types
+// ignore_for_file: camel_case_types, use_build_context_synchronously
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:yesil_turizm/views/karbon.dart';
 
 class auth_services {
   final usercollection = FirebaseFirestore.instance.collection("users");
@@ -23,12 +25,18 @@ class auth_services {
     }
   }
 
-  Future<void> signin({required String email, required String password}) async {
+  Future<void> signin(
+      {required BuildContext context,
+      required String email,
+      required String password}) async {
     try {
       final UserCredential userCredential = await firebaseAuth
           .signInWithEmailAndPassword(email: email, password: password);
       if (userCredential.user != null) {
-        Fluttertoast.showToast(msg: "giriş başarılı");
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const karboniz()),
+        );
       }
     } on FirebaseAuthException catch (e) {
       Fluttertoast.showToast(msg: e.message!);

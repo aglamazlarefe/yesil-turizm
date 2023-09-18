@@ -1,14 +1,17 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:yesil_turizm/config/Colors.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-
-  const MyAppBar({super.key, required this.title});
+  final bool is_account;
+  const MyAppBar({super.key, required this.title, this.is_account = true});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+        automaticallyImplyLeading: false,
         centerTitle: true,
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(bottom: Radius.circular(26))),
@@ -19,10 +22,11 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               color: project_colors.nav_bar_background, fontSize: 30),
         ),
         actions: <Widget>[
-          IconButton(
-              padding: const EdgeInsets.only(right: 10),
-              onPressed: () {},
-              icon: const Icon(Icons.account_circle, size: 40))
+          if (is_account)
+            IconButton(
+                padding: const EdgeInsets.only(right: 10),
+                onPressed: () {},
+                icon: const Icon(Icons.account_circle, size: 40))
         ]);
   }
 
