@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:yesil_turizm/homepage.dart';
 import 'package:yesil_turizm/views/karbon.dart';
 
 class auth_services {
@@ -37,6 +38,9 @@ class auth_services {
           context,
           MaterialPageRoute(builder: (context) => const karboniz()),
         );
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) => const HomePage(),
+        ));
       }
     } on FirebaseAuthException catch (e) {
       Fluttertoast.showToast(msg: e.message!);
