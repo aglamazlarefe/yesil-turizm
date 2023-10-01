@@ -1,5 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:yesil_turizm/config/Colors.dart';
 
@@ -25,7 +26,9 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
           if (is_account)
             IconButton(
                 padding: const EdgeInsets.only(right: 10),
-                onPressed: () {},
+                onPressed: () {
+                  FirebaseAuth.instance.signOut();
+                },
                 icon: const Icon(Icons.account_circle, size: 40))
         ]);
   }

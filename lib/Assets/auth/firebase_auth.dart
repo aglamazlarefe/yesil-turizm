@@ -34,6 +34,7 @@ class auth_services {
       final UserCredential userCredential = await firebaseAuth
           .signInWithEmailAndPassword(email: email, password: password);
       if (userCredential.user != null) {
+        print(usercollection);
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => const karboniz()),
