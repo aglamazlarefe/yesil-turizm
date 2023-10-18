@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:yesil_turizm/config/Colors.dart';
 import 'package:yesil_turizm/config/app_bar.dart';
-import 'package:yesil_turizm/Assets/auth/firebase_auth.dart';
+import 'package:yesil_turizm/Services/auth/firebase_auth.dart';
 import 'package:yesil_turizm/views/signin%20&%20signup/sign_in.dart';
 
 class LoginPage extends StatefulWidget {

@@ -1,6 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api, must_be_immutable, unused_import, prefer_const_constructors
 import 'package:firebase_core/firebase_core.dart';
-import 'package:yesil_turizm/Assets/auth/auth_changes.dart';
+import 'package:yesil_turizm/Services/auth/auth_changes.dart';
 import 'package:yesil_turizm/views/signin%20&%20signup/register_screen.dart';
 import 'package:yesil_turizm/views/signin%20&%20signup/sign_in.dart';
 import 'firebase_options.dart';

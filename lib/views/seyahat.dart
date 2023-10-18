@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:yesil_turizm/config/Colors.dart';
 import 'package:yesil_turizm/config/app_bar.dart';
+import 'package:yesil_turizm/views/rota.dart';
 
 // ignore: camel_case_types
 class seyahat extends StatelessWidget {
@@ -18,23 +19,29 @@ class seyahat extends StatelessWidget {
       body: Column(
         children: [
           seyahat_card(
-              backgroung_color: project_colors.green_base,
-              title: "Yeşil Rotalar",
-              icon: Icon(
-                Symbols.location_on,
-                grade: 200,
-                size: 85,
-                color: project_colors.sky_white,
-              )),
+            backgroung_color: project_colors.green_base,
+            title: "Yeşil Rotalar",
+            icon: Icon(
+              Symbols.location_on,
+              grade: 200,
+              size: 85,
+              color: project_colors.sky_white,
+            ),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Rota()));
+            },
+          ),
           seyahat_card(
-              backgroung_color: project_colors.black_darker,
-              title: "Yeşil Konaklama",
-              icon: Icon(
-                Symbols.home,
-                grade: 200,
-                size: 85,
-                color: project_colors.sky_white,
-              )),
+            backgroung_color: project_colors.black_darker,
+            title: "Yeşil Konaklama",
+            icon: Icon(
+              Symbols.home,
+              grade: 200,
+              size: 85,
+              color: project_colors.sky_white,
+            ),
+          ),
           seyahat_card(
               backgroung_color: project_colors.green_base,
               title: "Çevre Dostu Yeme İçme Yerleri",
@@ -54,11 +61,13 @@ class seyahat_card extends StatelessWidget {
   final String title;
   final icon;
   final backgroung_color;
+  final Function()? onTap;
   const seyahat_card(
       {super.key,
       required this.title,
       required this.icon,
-      required this.backgroung_color});
+      required this.backgroung_color,
+      this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +79,7 @@ class seyahat_card extends StatelessWidget {
         child: CustomListTile(
           title: title,
           leadingWidget: icon,
+          onTap: onTap,
         ),
       ),
     );
@@ -84,6 +94,7 @@ class CustomListTile extends StatelessWidget {
   String title;
   String? subtitle;
   Widget? leadingWidget;
+  final Function()? onTap;
 
   CustomListTile(
       {super.key,
@@ -100,12 +111,13 @@ class CustomListTile extends StatelessWidget {
       ),
       required this.title,
       this.subtitle,
-      this.leadingWidget});
+      this.leadingWidget,
+      this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: onTap,
       child: Row(
         crossAxisAlignment: crossAxisAlignment,
         children: [

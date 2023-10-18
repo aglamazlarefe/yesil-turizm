@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types, use_build_context_synchronously
+// ignore_for_file: camel_case_types, use_build_context_synchronously, avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -34,7 +34,6 @@ class auth_services {
       final UserCredential userCredential = await firebaseAuth
           .signInWithEmailAndPassword(email: email, password: password);
       if (userCredential.user != null) {
-        print(usercollection);
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => const karboniz()),
