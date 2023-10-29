@@ -68,6 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                   labelText: "Şifre",
                   labelStyle: TextStyle(color: project_colors.green_base),
                   border: OutlineInputBorder()),
+              obscureText: true,
             ),
             MaterialButton(
               onPressed: () {

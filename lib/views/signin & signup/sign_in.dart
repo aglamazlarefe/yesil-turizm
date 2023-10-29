@@ -54,6 +54,7 @@ class _LoginPageState extends State<sign_in> {
                   labelText: "Şifre",
                   labelStyle: TextStyle(color: project_colors.green_base),
                   border: OutlineInputBorder()),
+              obscureText: true,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
